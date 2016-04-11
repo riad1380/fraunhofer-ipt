@@ -1,0 +1,10 @@
+<html>
+<head>
+
+<body>
+	<p id="demo">hello world !!! </p>
+
+<button type="button"
+	onclick="document.getElementById('demo').innerHTML ='Hello Js'"> Click Me ! </button>
+</body>
+</html>
