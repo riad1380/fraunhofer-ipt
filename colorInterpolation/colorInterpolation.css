@@ -1,0 +1,15 @@
+#svgContainer {
+	width: 2000px;
+	height: 3000px;
+	background-color: white;
+}
+
+p,h2 {
+	font-family: 'Oxygen';
+	max-width: 400px;
+}
+
+.verticalLine {
+	border-top: thin solid #aaa;
+	line-height: 140%;
+}
