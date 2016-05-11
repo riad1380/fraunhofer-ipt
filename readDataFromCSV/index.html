@@ -5,12 +5,14 @@
 		<script type= "text/javascript" src="../d3/d3.min.js"></script>
 	</head>
 	<body>
-		<!--<div id="polygon"></div>-->
-		<!--<div id= "selectingDatas">
-			<p> color </p>
-			<p> green </p>
-			<p> red </p>
-		</div> -->
+		<div>
+			Black- Width : 
+			<select name = "blackColorWidthList" id= "blackColorWidthId" onchange = "strokewidthChange()">
+				<option value = ".1"> Size 1 </option>
+				<option value = ".5"> Size 2 </option>
+				<option value = "1"> Size 3 </option>
+			</select> 
+		</div>
 		<script type="text/javascript" src="js/importFromCSV.js"></script>
 	</body>
 </html>
