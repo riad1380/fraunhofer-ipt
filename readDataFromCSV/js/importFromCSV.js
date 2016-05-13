@@ -1,21 +1,10 @@
-var poly = d3.select("body").append("svg").attr("width",1000).attr("height",667).attr("id","yellowPolygon");
+var poly = d3.select("body").append("svg").attr("width",1000).attr("height",667);//.attr("id","yellowPolygon");
 var tooltip = d3.select("body").append('div').attr("class", "tooltip").style("display","none");
 var zoom = d3.behavior.zoom().scaleExtent ([1, 10]).on ("zoom", zoomed);
 var container = poly.append("g").call(zoom);
 var strokeWidthOfEachPolygonOriginal = .1;
 var drawPOlygoncounter = 0;
-/*window.onload = function (){
-	console.log("window loading");
-	var e = document.getElementById("blackColorWidthId");
-	strokeWidthOfEachPolygon = e.options[e.selectedIndex].value;
-	console.log(strokeWidthOfEachPolygon);
-	console.log(strokeWidthOfEachPolygonOriginal);
-	if(strokeWidthOfEachPolygonOriginal != strokeWidthOfEachPolygon){
-		console.log("insideIf");
-		strokeWidthOfEachPolygonOriginal = strokeWidthOfEachPolygon;
-	}
-	
-}*/
+var xCounter = 0;
 
 var xydata = function (d){
 	return {
@@ -27,13 +16,10 @@ var xydata = function (d){
 function strokewidthChange(){
 	var e = document.getElementById("blackColorWidthId");
 	strokeWidthOfEachPolygon = e.options[e.selectedIndex].value;
-	//console.log(strokeWidthOfEachPolygon);
-	//console.log(strokeWidthOfEachPolygonOriginal);
 	if(strokeWidthOfEachPolygon != strokeWidthOfEachPolygonOriginal){
 		strokeWidthOfEachPolygonOriginal = strokeWidthOfEachPolygon;
 		drawPolygon();
 	}
-	//window.location.reload(true);
 }
 var scaleX = d3.scale.linear()
 			.domain([0,0.028625])
@@ -58,35 +44,31 @@ function drawPolygon(){
 	drawPOlygoncounter = 3;
 	console.log("-------");
 	console.log(strokeWidthOfEachPolygonOriginal);
-var projectDatas =d3.csv("node.csv",xydata,function(data) {
+var projectDatas =d3.csv("node.csv",xydata,function(nodeData) {
 
-	var newPoly =data.map(function(d){
+	var newPoly =nodeData.map(function(d){// data is nodeData
 		return [scaleX(d.x),scaleY(d.y)];
 	});
 
 	for (var i = 0; i< newPoly.length; i++){
 		wholeData.push({
-			id : data [i].id,
-			x  : data [i].x,
-			y  : data [i].y
+			id : nodeData [i].id,
+			x  : nodeData [i].x,
+			y  : nodeData [i].y
 		});
 	}
 
 	var links = [];
 	var polygonDatas = [];
-	d3.csv("element.csv",function(data){
-		for(var i =0; i< data.length; i++){
-			links [0] = wholeData[data [i].node1-1];
-			links [1] = wholeData[data [i].node2-1];
-			links [2] = wholeData[data [i].node3-1];
-			links [3] = wholeData[data [i].node4-1];
+	d3.csv("element.csv",function(elementData){
+		for(var i =0; i< elementData.length; i++){
+			links [0] = wholeData[elementData [i].node1-1];//elementData
+			links [1] = wholeData[elementData [i].node2-1];//elementData
+			links [2] = wholeData[elementData [i].node3-1];//elementData
+			links [3] = wholeData[elementData [i].node4-1];//elementData
 			polygonDatas [i] = links.slice(); 
 		}
 
-		/*console.log(typeof polygonDatas);
-		console.log(polygonDatas);
-		console.log(polygonDatas [0] );
-		console.log(polygonDatas [0] [0] .id);*/
 		var i = 0;
 	
 
@@ -113,55 +95,28 @@ var projectDatas =d3.csv("node.csv",xydata,function(data) {
 							.style("top",(d3.event.pageY) + "px");
 				});
 				
-				d3.select(this).attr("fill","yellow");
-				/*container.selectAll("g")
-					.data(d)
-					.enter()
-					.append("polygon")
-					.attr("points",function(){
-						return d.map(function (d){
-							return [scaleX(d.x),scaleY(d.y)].join(",");
-						})
-					.join(" ");
-				})
-					.attr("stroke","blue")
-		 	        .attr("fill","yellow")
-			        .attr("stroke-width",2);*/
-			        
+				d3.select(this).attr("fill","yellow");			        
 			})
 			.on('mouseout',function(d){
 				d3.select(this).attr("fill","red");
 				div.style("display","none");	
-			})
-			/*.on('click',function(d){
-				//var separatePolygonDatas = constructPoints(d);
-				//console.log(separatePolygonDatas);
-				container.selectAll("sg")
-					.data(d)
-					.enter()
-					.append("polygon")
-					.attr("points",function(){
-						return d.map(function (d){
-							return [scaleX(d.x),scaleY(d.y)].join(",");
-						})
-					.join(" ");
-				})
-					.attr("stroke","blue")
-		 	        .attr("fill","yellow")
-			        .attr("stroke-width",2);
-			        //console.log(pointsData);
-			})*/
+			});
 
-			/*function constructPoints(d){ // here d is the array of four object i.e polygon [i]
-				var pointsData='';
-				for(var i =0; i <d.length; i++){
-					pointsData = pointsData + d[i].x + ',' + d[i].y + " ";
-				}
-				console.log(pointsData);
-			}*/		
+		var circles = poly.selectAll("circles")
+								.data (nodeData)
+								.enter ()
+								.append ("circle");
+
+		var circleAttributes = 
+		circles.attr("cx", function (d){ return scaleX(d.x)})
+		.attr("cy",function (d){ return scaleY(d.y)})
+		.attr("r",2)
+		.style("fill","green");
+
 	});
 });
 }
+
 if(drawPOlygoncounter == 0){
 	console.log("counter" + drawPOlygoncounter);
 	drawPolygon();
