@@ -1,11 +1,24 @@
 .tooltip{
 	position: absolute;
 	text-align: center;
-	width: 60 px;
+	width: 90 px;
 	height: 12 px;
 	padding: 8 px;
 	margin-top : -20 px;
 	font : 10px sans-serif;
 	background : #ddd;
 	pointer-events : none;
+}
+
+.caption {
+	font-weight: bold
+}
+
+.key path {
+	display: none;
+}
+
+.key line {
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
