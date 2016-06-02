@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<link rel ="stylesheet" type = "text/css" href="css/mystyle.css">
+		<script type= "text/javascript" src="js/d3.min.js"></script>
+	</head>
+	<body>
+		<div>
+			No of time : <input type="number" min="0" value="0" name="noOfTime" id="noOfsecond" onKeyPress="return isNumberKey(event)"/> <br/>
+			<br/>
+			PART SELECTIONS: <br/>
+			  <input type="checkbox" name="parts" value="Glass"> Glass <br>
+			  <input type="checkbox" name="parts" value="Lower Mold Insert"> Lower Mold Insert<br>
+              <input type="checkbox" name="parts" value="Lower Mold Die"> Lower Mold Die<br>
+           	  <input type="checkbox" name="parts" value="Lower Cooling Plate"> Lower Cooling Plate<br>
+              <input type="checkbox" name="parts" value="Upper Mold Insert"> Upper Mold Insert<br>
+              <input type="checkbox" name="parts" value="Upper Mold Die"> Upper Mold Die<br>
+              <input type="checkbox" name="parts" value="Upper Cooling Plate"> Upper Cooling Plate<br>
+            Feature Selections: <br/>
+              <input type="radio" name="Features" value="Temperature" checked="checked" > Temperature <br>
+              <input type="radio" name="Features" value="Stress" > Stress <br>
+              <input type="submit" value="Submit" onClick = submit()> 
+		</div>
+		<br/>
+		<script type="text/javascript" src="js/importFromCSV.js"></script>
+	</body>
+</html>

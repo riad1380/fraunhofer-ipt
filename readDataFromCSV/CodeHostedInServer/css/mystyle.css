@@ -1,0 +1,34 @@
+body{
+	font-family: FrutigerLTW02, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height:1.4rem;
+	letter-spacing: 0.075em;
+	display: inline-block;
+	font-weight: 400;
+	text-decoration: none;
+	font-size : 16 px;
+}
+.tooltip{
+	position: absolute;
+	text-align: left;
+	width: 90 px;
+	height: 12 px;
+	padding: 8 px;
+	margin-top : -20 px;
+	font-family : Frutiger;
+	font-size : 16 px;
+	background : #ddd;
+	pointer-events : none;
+}
+
+.caption {
+	font-weight: bold
+}
+
+.key path {
+	display: none;
+}
+
+.key line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+}

@@ -1,0 +1,25 @@
+.tooltip{
+	position: absolute;
+	text-align: left;
+	width: 90 px;
+	height: 12 px;
+	padding: 8 px;
+	margin-top : -20 px;
+	font-family : Frutiger;
+	font-size : 16 px;
+	background : #ddd;
+	pointer-events : none;
+}
+
+.caption {
+	font-size: 12 px;
+}
+
+.key path {
+	display: none;
+}
+
+.key line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
